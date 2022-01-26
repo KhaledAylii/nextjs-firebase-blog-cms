@@ -12,6 +12,13 @@
 - in the editor page, drag files into the input text area to upload, an image tag will be added to it automatically on upload success.
 - in the editor page, the body is used as markup and HTML syntax can be used.
 
+## Deploying
+
+- go to the firebase console hosting page and follow the getting started instructions
+- run `npx next export`
+- run `firebase init`, select hosting, when asked for public directory, input `out`
+- run `firebase deploy --only hosting`
+
 ## Running Locally
 
 First, run the development server:

@@ -88,7 +88,7 @@ export default function CreatePage({ postId = undefined }) {
         setBody(snapshot.val()?.body || "");
       });
     }
-  }, [postId]);
+  }, [postId, postRef]);
 
   const storage = getStorage();
   const handleDrop = (files) => {
