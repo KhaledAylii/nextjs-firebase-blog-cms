@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 export const Progress = () => {
   const [dots, setDots] = useState("");
   useEffect(() => {
-    const int = setInterval(() => {
-      if (dots.length >= 3) {
-        setDots("");
+    const int = setTimeout(() => {
+      if (dots.length >= 4) {
+        setDots(".");
       } else {
         setDots((prevState) => `${prevState}.`);
       }
     }, 500);
     return () => {
-      clearInterval(int);
+      clearTimeout(int);
     };
-  }, []);
+  }, [dots, setDots]);
   return <>{dots}</>;
 };
