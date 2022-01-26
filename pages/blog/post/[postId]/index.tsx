@@ -28,22 +28,31 @@ export default function PostPage({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-  initializeApp(firebaseConfig);
-  const db = getDatabase();
-  console.log("prms", params.postId);
-  const myRef = ref(db, `posts/${params.postId}`);
-  const post = await (await get(myRef)).val();
+  try {
+    initializeApp(firebaseConfig);
+    const db = getDatabase();
+    console.log("prms", params.postId);
+    const myRef = ref(db, `posts/${params.postId}`);
+    const post = await (await get(myRef)).val();
 
-  return { props: { post, key: params.postId }, revalidate: 60 };
+    return { props: { post, key: params.postId }, revalidate: 60 };
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export async function getStaticPaths() {
-  initializeApp(firebaseConfig);
-  const db = getDatabase();
-  const myRef = ref(db, "posts/");
-  const data = await get(myRef);
-  const paths = Object.keys(data.val() || {}).map((id) => ({
-    params: { postId: id },
-  }));
-  return { paths, fallback: false };
+  try {
+    initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const myRef = ref(db, "posts/");
+    const data = await get(myRef);
+    const paths = Object.keys(data.val() || {}).map((id) => ({
+      params: { postId: id },
+    }));
+    return { paths, fallback: false };
+  } catch (err) {
+    console.log(err);
+    return { paths: [], fallback: false };
+  }
 }

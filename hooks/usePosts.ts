@@ -45,8 +45,12 @@ const mockPosts = [
 ];
 
 export const getPosts = async () => {
-  const db = getDatabase();
-  const myRef = ref(db, "posts/");
+  try {
+    const db = getDatabase();
+    const myRef = ref(db, "posts/");
 
-  return await (await get(myRef)).val();
+    return await (await get(myRef)).val();
+  } catch (err) {
+    console.log(err);
+  }
 };

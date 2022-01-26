@@ -16,9 +16,14 @@ export default function CreatePage({ postId = undefined }) {
   const [coverImage, setCoverImage] = useState(undefined);
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const db = getDatabase();
   const finalId = postId || v4();
-  const postRef = ref(db, "posts/" + finalId);
+  let db, postRef;
+  try {
+    db = getDatabase();
+    postRef = ref(db, "posts/" + finalId);
+  } catch (err) {
+    console.log(err);
+  }
   const handlePostUpload = (coverImageUrl = "") => {
     if (password !== config.password) return;
     const payload =

@@ -12,11 +12,15 @@ import { config } from "../webapp-config";
 export default function Home() {
   const [body, setBody] = useState(undefined);
   useEffect(() => {
-    const db = getDatabase();
-    const homeRef = ref(db, "posts/home");
-    get(homeRef).then((snapshot) => {
-      setBody(snapshot.val()?.body || "");
-    });
+    try {
+      const db = getDatabase();
+      const homeRef = ref(db, "posts/home");
+      get(homeRef).then((snapshot) => {
+        setBody(snapshot.val()?.body || "");
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
   return (
     <div className={styles.container}>

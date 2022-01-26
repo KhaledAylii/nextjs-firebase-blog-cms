@@ -26,7 +26,7 @@ export default function BlogPage({ posts }) {
 export async function getStaticProps({ params }) {
   return {
     props: {
-      posts: await getPosts(),
+      posts: (await getPosts()) || null,
     },
     revalidate: 60,
   };

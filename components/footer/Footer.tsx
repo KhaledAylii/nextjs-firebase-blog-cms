@@ -8,6 +8,7 @@ export const Footer = () => {
         className={styles.rainbowText}
         href="https://github.com/KhaledAylii/nextjs-firebase-blog-cms"
         target="_blank"
+        rel="noreferrer"
       >{` github`}</a>
     </div>
   );
