@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDatabase, onValue, ref } from "firebase/database";
+import { get, getDatabase, onValue, ref } from "firebase/database";
 
 export interface Post {
   title?: string;
@@ -44,17 +44,9 @@ const mockPosts = [
   },
 ];
 
-export const usePosts = (): Post[] => {
+export const getPosts = async () => {
   const db = getDatabase();
   const myRef = ref(db, "posts/");
-  const [posts, setPosts] = useState<Post[]>([]);
 
-  useEffect(() => {
-    onValue(myRef, (snapshot) => {
-      const data = snapshot.val();
-      setPosts(data);
-    });
-  }, []);
-
-  return posts;
+  return await (await get(myRef)).val();
 };

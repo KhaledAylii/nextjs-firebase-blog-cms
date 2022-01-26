@@ -183,7 +183,8 @@
   font-size: small;
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding-top: 1rem;
   /* border-top: 1px solid #ececec; */
 }

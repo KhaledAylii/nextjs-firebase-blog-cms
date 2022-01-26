@@ -34,7 +34,7 @@ export async function getStaticProps({ params }) {
   const myRef = ref(db, `posts/${params.postId}`);
   const post = await (await get(myRef)).val();
 
-  return { props: { post } };
+  return { props: { post, key: params.postId }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {

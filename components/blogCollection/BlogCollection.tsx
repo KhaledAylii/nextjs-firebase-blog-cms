@@ -1,9 +1,8 @@
-import { usePosts } from "../../hooks/usePosts";
+import { Post } from "../../hooks/usePosts";
 import { BlogCard } from "./blogCard/BlogCard";
 import styles from "./BlogCollection.module.css";
 
-export const BlogCollection = () => {
-  const posts = usePosts();
+export const BlogCollection = ({ posts }: { posts: Post[] }) => {
   return (
     <div className={styles.container}>
       {Object.entries(posts)?.map(([postId, post]) => {

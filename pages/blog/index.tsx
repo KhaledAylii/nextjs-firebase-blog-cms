@@ -2,10 +2,11 @@ import Head from "next/head";
 import { BlogCollection } from "../../components/blogCollection/BlogCollection";
 import { Footer } from "../../components/footer/Footer";
 import { Header } from "../../components/header/Header";
+import { getPosts } from "../../hooks/usePosts";
 import styles from "../../styles/Blogs.module.css";
 import { config } from "../../webapp-config";
 
-export default function BlogPage() {
+export default function BlogPage({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,9 +16,18 @@ export default function BlogPage() {
       </Head>
       <Header />
       <div className={styles.body}>
-        <BlogCollection />
+        <BlogCollection posts={posts} />
       </div>
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps({ params }) {
+  return {
+    props: {
+      posts: await getPosts(),
+    },
+    revalidate: 60,
+  };
 }

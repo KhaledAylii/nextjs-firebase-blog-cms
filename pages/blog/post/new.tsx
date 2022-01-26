@@ -66,6 +66,7 @@ export default function CreatePage({ postId = undefined }) {
     }
   };
   const handleCreate = () => {
+    if (password !== config.password) return;
     if (coverImage) {
       handleUploadCoverImage().then((url) => {
         handlePostUpload(url || "");
@@ -75,6 +76,7 @@ export default function CreatePage({ postId = undefined }) {
     }
   };
   const handleDelete = () => {
+    if (password !== config.password) return;
     remove(postRef).then(() => {
       router.push("/blog");
     });
@@ -88,7 +90,7 @@ export default function CreatePage({ postId = undefined }) {
         setBody(snapshot.val()?.body || "");
       });
     }
-  }, [postId, postRef]);
+  }, [postId]);
 
   const storage = getStorage();
   const handleDrop = (files) => {
@@ -135,7 +137,7 @@ export default function CreatePage({ postId = undefined }) {
         title
         <input
           className={styles.titleInput}
-          value={title}
+          defaultValue={title}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -183,7 +185,7 @@ export default function CreatePage({ postId = undefined }) {
         body
         <textarea
           className={styles.bodyInput}
-          value={body}
+          defaultValue={body}
           onChange={(e) => {
             setBody(e.target.value);
           }}
