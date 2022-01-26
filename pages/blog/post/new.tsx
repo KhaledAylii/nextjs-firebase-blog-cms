@@ -48,7 +48,7 @@ export default function CreatePage({ postId = undefined }) {
       });
     } else {
       set(postRef, payload).then(() => {
-        router.push("/blog/post/" + finalId);
+        router.push("/blog");
       });
     }
   };
@@ -190,7 +190,7 @@ export default function CreatePage({ postId = undefined }) {
         body
         <textarea
           className={styles.bodyInput}
-          defaultValue={body}
+          value={body}
           onChange={(e) => {
             setBody(e.target.value);
           }}
