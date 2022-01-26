@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.titleInput {
+  width: 600px;
+}
+
+.bodyInput {
+  width: 600px;
+  min-height: 600px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dropZoneHover textarea {
+  background-color: #ccc;
+}
+.dropZoneHover::after {
+  content: "drop file";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  /* transform: translate(50%, 50%); */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: black;
+  opacity: 0.5;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    font-size: 2.5rem;
+    color: black;
+  }
+  50% {
+    font-size: 3rem;
+    color: darkred;
+  }
+  100% {
+    font-size: 2.5rem;
+    color: black;
+  }
+}

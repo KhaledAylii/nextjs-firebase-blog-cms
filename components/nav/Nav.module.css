@@ -1,0 +1,19 @@
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.navbarButton {
+  cursor: pointer;
+  display: block;
+  font-size: x-large;
+  min-width: 100px;
+}
+
+.navbarButtonSelected {
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.navbarButton:hover {
+  border-bottom: 3px solid var(--color-primary);
+}
