@@ -24,21 +24,21 @@ export default function BlogPage({ posts }) {
 }
 
 export async function getStaticProps() {
-  return await getPosts()
+  let result = {
+    props: {
+      posts: {},
+    },
+    revalidate: 10,
+  };
+  await getPosts()
     .then((posts) => {
-      return {
+      result = {
         props: {
           posts,
         },
         revalidate: 10,
       };
     })
-    .catch(() => {
-      return {
-        props: {
-          posts: {},
-        },
-        revalidate: 10,
-      };
-    });
+    .catch();
+  return result;
 }
