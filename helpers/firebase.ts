@@ -5,7 +5,9 @@ export const getDatabase = () => {
     const db = Database.getDatabase();
     return db;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
 export const ref = (...props) => {
@@ -13,7 +15,9 @@ export const ref = (...props) => {
     const result = Database.ref.apply(null, props);
     return result;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
 export const set = (...props) => {
@@ -21,7 +25,9 @@ export const set = (...props) => {
     const result = Database.set.apply(null, props);
     return result;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
 export const get = (...props) => {
@@ -29,7 +35,9 @@ export const get = (...props) => {
     const result = Database.get.apply(null, props);
     return result;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
 export const update = (...props) => {
@@ -37,7 +45,9 @@ export const update = (...props) => {
     const result = Database.update.apply(null, props);
     return result;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
 export const remove = (...props) => {
@@ -45,6 +55,8 @@ export const remove = (...props) => {
     const result = Database.remove.apply(null, props);
     return result;
   } catch {
-    return undefined;
+    return new Promise((res) => {
+      res({});
+    });
   }
 };
