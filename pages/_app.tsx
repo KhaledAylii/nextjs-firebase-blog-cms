@@ -4,7 +4,11 @@ import { firebaseConfig } from "../webapp-config";
 import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
-  initializeApp(firebaseConfig);
+  try {
+    initializeApp(firebaseConfig);
+  } catch (err) {
+    console.log(err);
+  }
   const router = useRouter();
   const { state } = router.query;
   if (state) {

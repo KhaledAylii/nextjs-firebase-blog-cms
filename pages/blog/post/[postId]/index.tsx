@@ -31,25 +31,43 @@ export default function PostPage({ post }) {
 }
 
 export async function getStaticProps({ params }) {
-  initializeApp(firebaseConfig);
-  const db = getDatabase();
-  const myRef = ref(db, `posts/${params.postId}`);
-  const post = config.isDemo
-    ? mockPosts.find((post) => post.postId == params.postId) || null
-    : await (await get(myRef)).val();
+  try {
+    initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const myRef = ref(db, `posts/${params.postId}`);
+    const post = config.isDemo
+      ? mockPosts.find((post) => post.postId == params.postId) || null
+      : await (await get(myRef)).val();
 
-  return { props: { post, key: params.postId }, revalidate: 60 };
+    return { props: { post, key: params.postId }, revalidate: 60 };
+  } catch (err) {
+    console.log(err);
+    const post = mockPosts.find((post) => post.postId == params.postId);
+    return config.isDemo
+      ? { props: { post, key: params.postId }, revalidate: 60 }
+      : null;
+  }
 }
 
 export async function getStaticPaths() {
-  initializeApp(firebaseConfig);
-  const db = getDatabase();
-  const myRef = ref(db, "posts/");
-  const data = await get(myRef);
-  const paths = config.isDemo
-    ? mockPosts.map(({ postId }) => ({ params: { postId: `${postId}` } }))
-    : Object.keys(data.val() || {}).map((id) => ({
-        params: { postId: id },
-      }));
-  return { paths, fallback: "blocking" };
+  try {
+    initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const myRef = ref(db, "posts/");
+    const data = await get(myRef);
+    const paths = config.isDemo
+      ? mockPosts.map(({ postId }) => ({ params: { postId: `${postId}` } }))
+      : Object.keys(data.val() || {}).map((id) => ({
+          params: { postId: id },
+        }));
+    return { paths, fallback: "blocking" };
+  } catch (err) {
+    console.log(err);
+    const paths = mockPosts.map(({ postId }) => ({
+      params: { postId: `${postId}` },
+    }));
+    return config.isDemo
+      ? { paths, fallback: "blocking" }
+      : { paths: [], fallback: "blocking" };
+  }
 }
