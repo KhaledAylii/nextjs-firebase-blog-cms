@@ -1,4 +1,4 @@
-import { get, getDatabase, ref } from "firebase/database";
+import { get, getDatabase, ref } from "../helpers/firebase";
 import Head from "next/head";
 import Image from "next/image";
 import { useEffect, useState } from "react";

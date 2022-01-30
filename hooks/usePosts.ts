@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { get, getDatabase, onValue, ref } from "firebase/database";
+import { get, getDatabase, ref } from "../helpers/firebase";
 import { config } from "../webapp-config";
 
 export interface Post {

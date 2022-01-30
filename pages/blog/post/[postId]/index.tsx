@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { get, getDatabase, ref } from "firebase/database";
+import { get, getDatabase, ref } from "../../../../helpers/firebase";
 import styles from "../../../../styles/Post.module.css";
 import { Footer } from "../../../../components/footer/Footer";
 import { config, firebaseConfig } from "../../../../webapp-config";
