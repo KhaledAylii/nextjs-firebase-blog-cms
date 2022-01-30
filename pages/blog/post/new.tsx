@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "../../../styles/Create.module.css";
 import postStyles from "../../../styles/Post.module.css";
-import { get, getDatabase, ref, remove, set, update } from "firebase/database";
+import {
+  get,
+  getDatabase,
+  ref,
+  remove,
+  set,
+  update,
+} from "../../../helpers/firebase";
 import { v4 } from "uuid";
 import { useRouter } from "next/router";
 import { uploadImage } from "../../../hooks/uploadImage";
 import ReactMarkdown from "react-markdown";
+import { config } from "../../../webapp-config";
 export default function CreatePage({ postId = undefined }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
