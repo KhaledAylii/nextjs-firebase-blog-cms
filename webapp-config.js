@@ -7,6 +7,7 @@ export const config = {
   homeTabTitle: "home",
   blogTabTitle: "blog",
   password: "allowseditingandcreation - CHANGE THIS",
+  isDemo: true,
 };
 
 // get these when setting up your firebase project
