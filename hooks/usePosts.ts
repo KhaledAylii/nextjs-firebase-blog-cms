@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { get, getDatabase, onValue, ref } from "firebase/database";
+import { config } from "../webapp-config";
 
 export interface Post {
   title?: string;
@@ -9,7 +10,7 @@ export interface Post {
   body?: string;
 }
 
-const mockPosts = [
+export const mockPosts = [
   {
     title: "Blog 1",
     description: "Desc1233123123",
@@ -23,7 +24,7 @@ const mockPosts = [
     description: "Desc1233123123",
     imageURL:
       "https://www.rd.com/wp-content/uploads/2020/05/ok-vs-okay-scaled.jpg",
-    postId: 1,
+    postId: 2,
     body: "lorem ipsum sit amet dolor",
   },
   {
@@ -31,7 +32,7 @@ const mockPosts = [
     description: "Desc1233123123",
     imageURL:
       "https://www.rd.com/wp-content/uploads/2020/05/ok-vs-okay-scaled.jpg",
-    postId: 1,
+    postId: 3,
     body: "lorem ipsum sit amet dolor",
   },
   {
@@ -39,18 +40,18 @@ const mockPosts = [
     description: "Desc1233123123",
     imageURL:
       "https://www.rd.com/wp-content/uploads/2020/05/ok-vs-okay-scaled.jpg",
-    postId: 1,
+    postId: 4,
     body: "lorem ipsum sit amet dolor",
   },
 ];
 
 export const getPosts = async () => {
-  try {
-    const db = getDatabase();
-    const myRef = ref(db, "posts/");
+  const db = getDatabase();
+  const myRef = ref(db, "posts/");
 
-    return await (await get(myRef)).val();
-  } catch (err) {
-    console.log(err);
-  }
+  return config.isDemo
+    ? new Promise((res) => {
+        res(mockPosts);
+      })
+    : await (await get(myRef)).val();
 };

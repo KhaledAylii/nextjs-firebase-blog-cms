@@ -25,25 +25,5 @@ export const BlogCard: React.FC<{ post: Post; postId: string }> = ({
       />
       <div className={styles.textSection}>{post.title}</div>
     </div>
-    // <div className={styles.flipCard} onClick={handleClick}>
-    //   <div className={styles.flipCardInner}>
-    //     <div className={styles.flipCardFront}>
-    //       <div className={styles.textSection}>
-    //         <span className={styles.title}>{post.title}</span>
-    //       </div>
-    //     </div>
-    //     <div className={styles.flipCardBack}>
-    //       <div
-    //         style={{
-    //           width: "100%",
-    //           height: "100%",
-    //           backgroundImage: `url(${post.imageURL})`,
-    //           backgroundSize: "cover",
-    //           backgroundPosition: "center",
-    //         }}
-    //       />
-    //     </div>
-    //   </div>
-    // </div>
   );
 };

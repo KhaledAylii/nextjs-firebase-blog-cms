@@ -18,7 +18,7 @@ export const FlashingCursor: React.FC<DivProps & { cursorSize: number }> = ({
       <div
         {...props}
         style={{
-          borderRight: `${showCursor ? "0px" : `${cursorSize}px`} solid
+          borderRight: `${showCursor ? "0px" : `${cursorSize}px`} solid #333
           `,
           marginRight: `${showCursor ? "0px" : `-${cursorSize}px`}`,
           display: "block",

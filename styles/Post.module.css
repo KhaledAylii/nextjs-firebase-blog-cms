@@ -16,12 +16,26 @@
   background-size: cover;
   background-position: center;
 }
+.articleContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 46px;
+  font-weight: 700;
+}
 
 .body {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   margin-bottom: 2rem;
+  line-height: 28px;
+  font-size: 19px;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  /* font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif; */
 }
 
 .body img {
@@ -29,9 +43,15 @@
   /* max-height: 400px; */
   /* height: 300px; */
   object-fit: cover;
-  width: 50%;
   /* margin: 0 auto; */
   border: 1px solid #ddd;
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
+}
+
+@media only screen and (max-width: 800px) {
+  .articleContainer {
+    max-width: unset;
+  }
 }

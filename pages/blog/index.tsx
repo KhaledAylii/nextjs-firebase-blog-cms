@@ -23,11 +23,22 @@ export default function BlogPage({ posts }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  return {
-    props: {
-      posts: (await getPosts()) || null,
-    },
-    revalidate: 60,
-  };
+export async function getStaticProps() {
+  return await getPosts()
+    .then((posts) => {
+      return {
+        props: {
+          posts,
+        },
+        revalidate: 10,
+      };
+    })
+    .catch(() => {
+      return {
+        props: {
+          posts: {},
+        },
+        revalidate: 10,
+      };
+    });
 }
