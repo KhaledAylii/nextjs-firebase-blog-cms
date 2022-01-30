@@ -5,6 +5,7 @@
 - create a firebase project on https://firebase.google.com/ and follow the steps to setting up a web app, select realtime database during `firebase init`
 - copy the firebase config from the firebase setup steps into `webapp-config.js` instead of into the codebase
 - run `yarn dev` to ensure your website is properly setup
+- make an imgur account at https://imgur.com/
 
 ## Editing and Creating Content
 
